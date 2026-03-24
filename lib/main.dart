@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lab3/screens/cart_screen.dart';
 import 'package:lab3/screens/checkout_screen.dart';
+import 'package:lab3/screens/delivery_screen.dart';
 import 'package:lab3/screens/details_screen.dart';
 import 'package:lab3/screens/home_screen.dart';
 import 'package:lab3/screens/login_screen.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
-      home: DetailsScreen(), 
+      home: DeliveryScreen(), 
     );
   }
 }

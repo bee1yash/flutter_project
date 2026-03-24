@@ -113,7 +113,7 @@ class DetailsScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Delivered between monday aug and\nthursday 20 from 8pm to 91:32 pm',
+                  'Delivered between monday and\nthursday 20 from 8am to 8 pm',
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.grey.shade600,

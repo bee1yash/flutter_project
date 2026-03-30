@@ -13,7 +13,9 @@ class ProfileScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 20),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       body: Stack(
@@ -42,6 +44,7 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    
                   ],
                 ),
                 const SizedBox(height: 10),
@@ -79,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             TextFormField(
-                              initialValue: 'John Doe',
+                              initialValue: 'Marvis Ighedosa',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
@@ -92,7 +95,7 @@ class ProfileScreen extends StatelessWidget {
                               ),
                             ),
                             TextFormField(
-                              initialValue: 'test@gmail.com',
+                              initialValue: 'Dosamarvis@gmail.com',
                               style: const TextStyle(
                                 fontSize: 13,
                                 color: Colors.black54,
@@ -109,7 +112,7 @@ class ProfileScreen extends StatelessWidget {
                               ),
                             ),
                             TextFormField(
-                              initialValue: '+380 123456789',
+                              initialValue: '+234 9011039271',
                               style: const TextStyle(
                                 fontSize: 13,
                                 color: Colors.black54,
@@ -126,7 +129,7 @@ class ProfileScreen extends StatelessWidget {
                               ),
                             ),
                             TextFormField(
-                              initialValue: 'Bandera st.',
+                              initialValue: 'No 15 uti street off ovie palace road effurun delta state',
                               style: const TextStyle(
                                 fontSize: 13,
                                 color: Colors.black54,
@@ -138,9 +141,6 @@ class ProfileScreen extends StatelessWidget {
                                 isDense: true,
                                 contentPadding: EdgeInsets.symmetric(vertical: 8),
                                 border: InputBorder.none,
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black12),
-                                ),
                               ),
                             ),
                           ],
@@ -159,7 +159,9 @@ class ProfileScreen extends StatelessWidget {
             right: 40,
             child: CustomButton(
               text: 'Update',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
           ),
         ],

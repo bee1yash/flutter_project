@@ -6,7 +6,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF2F2F2), 
+      backgroundColor: const Color(0xFFF2F2F2),
       
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xFFF2F2F2),
@@ -14,9 +14,14 @@ class HomeScreen extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
+        onTap: (index) {
+          if (index == 2) {
+            Navigator.pushNamed(context, '/profile');
+          }
+        },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.deepOrange, size: 30), // Активна іконка
+            icon: Icon(Icons.home, color: Colors.deepOrange, size: 30),
             label: 'Home',
           ),
           BottomNavigationBarItem(
@@ -44,7 +49,12 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.shopping_cart_outlined, color: Colors.grey.shade400, size: 28),
+                    IconButton(
+                      icon: Icon(Icons.shopping_cart_outlined, color: Colors.grey.shade400, size: 28),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/cart');
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -57,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                     fontSize: 34,
                     fontWeight: FontWeight.bold,
                     height: 1.2,
-                    fontFamily: 'SFPRO', 
+                    fontFamily: 'SFPRO',
                   ),
                 ),
               ),
@@ -102,21 +112,23 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 10),
               
               SizedBox(
-                height: 270, 
+                height: 270,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.only(left: 40.0),
                   children: [
                     _buildFoodCard(
+                      context,
                       'Veggie\ntomato mix',
                       '\$10',
                       'assets/images/food1.png',
                     ),
                     const SizedBox(width: 30),
                     _buildFoodCard(
+                      context,
                       'Spicy fish\nsauce',
                       '\$15',
-                      'assets/images/food2.png', 
+                      'assets/images/food2.png',
                     ),
                     const SizedBox(width: 30),
                   ],
@@ -154,79 +166,84 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFoodCard(String title, String price, String imagePath) {
+  Widget _buildFoodCard(BuildContext context, String title, String price, String imagePath) {
     return SizedBox(
       width: 160,
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(top: 50.0),
-            height: 220,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  blurRadius: 10,
-                  spreadRadius: 2,
-                  offset: const Offset(0, 5),
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end, 
-              children: [
-                Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    height: 1.1,
+      child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, '/details');
+        },
+        borderRadius: BorderRadius.circular(30),
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 50.0),
+              height: 220,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.1),
+                    blurRadius: 10,
+                    spreadRadius: 2,
+                    offset: const Offset(0, 5),
                   ),
-                ),
-                const SizedBox(height: 15),
-                Text(
-                  price,
-                  style: const TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.deepOrange,
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      height: 1.1,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 30), 
-              ],
+                  const SizedBox(height: 15),
+                  Text(
+                    price,
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.deepOrange,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                ],
+              ),
             ),
-          ),
-          
-          Container(
-            height: 120,
-            width: 120,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  blurRadius: 10,
-                  offset: const Offset(0, 5),
-                ),
-              ],
-            ),
-            child: ClipOval(
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => Container(
-                  color: Colors.grey.shade300,
-                  child: const Icon(Icons.fastfood, color: Colors.grey),
+            Container(
+              height: 120,
+              width: 120,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    blurRadius: 10,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
+              ),
+              child: ClipOval(
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    color: Colors.grey.shade300,
+                    child: const Icon(Icons.fastfood, color: Colors.grey),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

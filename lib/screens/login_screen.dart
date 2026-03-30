@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../Components/text_field.dart';
-import '../Components/custom_button.dart';
+import '../components/text_field.dart';
+import '../components/custom_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -8,7 +8,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF2F2F2), 
+      backgroundColor: const Color(0xFFF2F2F2),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -22,20 +22,18 @@ class LoginScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const SizedBox(height: 100), 
-                  
+                  const SizedBox(height: 100),
                   SizedBox(
                     height: 120,
                     width: 120,
                     child: Center(
                       child: Image.asset(
-                        'assets/images/logo.png', 
+                        'assets/images/logo.png',
                         fit: BoxFit.contain,
                       ),
                     ),
                   ),
                   const SizedBox(height: 60),
-                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -45,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                             'Login',
                             style: TextStyle(
                               fontSize: 18,
-                              fontFamily: 'SFPRO', 
+                              fontFamily: 'SFPRO',
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -53,48 +51,50 @@ class LoginScreen extends StatelessWidget {
                           Container(
                             height: 3,
                             width: 80,
-                            color: Colors.deepOrange, 
+                            color: Colors.deepOrange,
                           )
                         ],
                       ),
-                      const Column(
-                        children: [
-                          Text(
-                            'Sign-up',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontFamily: 'SFPRO', 
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black54,
+                      
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacementNamed(context, '/signup');
+                        },
+                        child: const Column(
+                          children: [
+                            Text(
+                              'Sign-up',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontFamily: 'SFPRO',
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black54,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 11),
-                        ],
+                            SizedBox(height: 11),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-            
             Padding(
               padding: const EdgeInsets.all(30.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  
                   const CustomTextField(
                     labelText: 'Email address',
                   ),
                   const SizedBox(height: 30),
-                  
                   const CustomTextField(
                     labelText: 'Password',
-                    isObscure: true, 
+                    isObscure: true,
                   ),
                   const SizedBox(height: 20),
-                  
                   TextButton(
                     onPressed: () {},
                     child: const Text(
@@ -106,13 +106,16 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
                   const SizedBox(height: 40),
                   
                   CustomButton(
                     text: 'Login',
                     onPressed: () {
-                      print('Login clicked');
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        '/home', 
+                        (Route<dynamic> route) => false,
+                      );
                     },
                   ),
                 ],

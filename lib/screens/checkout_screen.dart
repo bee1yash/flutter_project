@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Components/custom_button.dart';
+import '../components/custom_button.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
@@ -7,7 +7,7 @@ class CheckoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F8), 
+      backgroundColor: const Color(0xFFF5F5F8),
       
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -15,7 +15,9 @@ class CheckoutScreen extends StatelessWidget {
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 20),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: const Text(
           'Checkout',
@@ -171,15 +173,15 @@ class CheckoutScreen extends StatelessWidget {
               
               const SizedBox(height: 50),
               
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     'Total',
                     style: TextStyle(fontSize: 17),
                   ),
-                  const Text(
-                    '23,000',
+                  Text(
+                    '\$25',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -191,9 +193,11 @@ class CheckoutScreen extends StatelessWidget {
               const SizedBox(height: 40),
               
               CustomButton(
-                    text: 'Proceed to payment',
-                    onPressed: () {},
-                  ),
+                text: 'Proceed to payment',
+                onPressed: () {
+                   Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+                },
+              ),
               
               const SizedBox(height: 30),
             ],

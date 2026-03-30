@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Components/custom_button.dart';
+import '../components/custom_button.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
@@ -7,28 +7,30 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F6F9), 
+      backgroundColor: const Color(0xFFF6F6F9),
       
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0, 
+        elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 20),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.favorite_border, color: Colors.black, size: 24),
             onPressed: () {},
           ),
-          const SizedBox(width: 10), 
+          const SizedBox(width: 10),
         ],
       ),
       
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0), 
+            padding: const EdgeInsets.symmetric(horizontal: 40.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -45,13 +47,13 @@ class DetailsScreen extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.3),
                           blurRadius: 40,
                           spreadRadius: 5,
-                          offset: const Offset(0, 20), 
+                          offset: const Offset(0, 20),
                         ),
                       ],
                     ),
                     child: ClipOval(
                       child: Image.asset(
-                        'assets/images/food1.png', 
+                        'assets/images/food1.png',
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) => Container(
                           color: Colors.grey.shade300,
@@ -117,7 +119,7 @@ class DetailsScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.grey.shade600,
-                    height: 1.4, 
+                    height: 1.4,
                   ),
                 ),
                 
@@ -142,10 +144,12 @@ class DetailsScreen extends StatelessWidget {
                 
                 const SizedBox(height: 50),
                 
-               CustomButton(
-                    text: 'Add to cart',
-                    onPressed: () {},
-                  ),
+                CustomButton(
+                  text: 'Add to cart',
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/cart');
+                  },
+                ),
                 
                 const SizedBox(height: 30),
               ],

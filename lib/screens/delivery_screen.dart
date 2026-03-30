@@ -14,10 +14,12 @@ class DeliveryScreen extends StatelessWidget {
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 20),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: const Text(
-          'Checkout',
+          'Delivery',
           style: TextStyle(
             color: Colors.black,
             fontSize: 18,
@@ -50,6 +52,21 @@ class DeliveryScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      minimumSize: const Size(50, 30),
+                      alignment: Alignment.centerRight,
+                    ),
+                    child: const Text(
+                      'change',
+                      style: TextStyle(
+                        color: Colors.deepOrange,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 10),
@@ -64,21 +81,21 @@ class DeliveryScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'John Doe',
+                      'Marvis Kparobo',
                       style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(height: 10),
                     Divider(color: Colors.grey.shade300, height: 1),
                     const SizedBox(height: 10),
                     const Text(
-                      'Bandera st.',
+                      'Km 5 refinery road oppsite re\npublic road, effurun, delta state',
                       style: TextStyle(fontSize: 15, height: 1.4),
                     ),
                     const SizedBox(height: 10),
                     Divider(color: Colors.grey.shade300, height: 1),
                     const SizedBox(height: 10),
                     const Text(
-                      '+380 123456789',
+                      '+234 9011039271',
                       style: TextStyle(fontSize: 15),
                     ),
                   ],
@@ -153,7 +170,9 @@ class DeliveryScreen extends StatelessWidget {
               const SizedBox(height: 40),
               CustomButton(
                 text: 'Proceed to payment',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/checkout');
+                },
               ),
               const SizedBox(height: 30),
             ],

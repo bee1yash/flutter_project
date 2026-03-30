@@ -14,7 +14,9 @@ class CartScreen extends StatelessWidget {
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 20),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: const Text(
           'Cart',
@@ -49,15 +51,16 @@ class CartScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 _buildCartItem(
                   'Veggie tomato mix',
-                  '\$10',
+                  '#1,900',
                   'assets/images/food1.png',
                 ),
                 const SizedBox(height: 15),
                 _buildCartItem(
-                  'Spicy fish sauce',
-                  '\$15',
+                  'Fishwith mix orange....',
+                  '#1,900',
                   'assets/images/food2.png',
                 ),
+                
                 const SizedBox(height: 120),
               ],
             ),
@@ -68,7 +71,9 @@ class CartScreen extends StatelessWidget {
             right: 30,
             child: CustomButton(
               text: 'Complete order',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/delivery');
+              },
             ),
           ),
         ],
@@ -149,6 +154,4 @@ class CartScreen extends StatelessWidget {
       ),
     );
   }
-
-  
 }

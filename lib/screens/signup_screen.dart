@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../Components/text_field.dart';
-import '../Components/custom_button.dart';
+import '../components/text_field.dart';
+import '../components/custom_button.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -37,20 +37,26 @@ class SignupScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Column(
-                        children: [
-                          Text(
-                            'Login',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontFamily: 'SFPRO',
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black54,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacementNamed(context, '/login');
+                        },
+                        child: const Column(
+                          children: [
+                            Text(
+                              'Login',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontFamily: 'SFPRO',
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black54,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 11),
-                        ],
+                            SizedBox(height: 11),
+                          ],
+                        ),
                       ),
+                      
                       Column(
                         children: [
                           const Text(
@@ -89,10 +95,22 @@ class SignupScreen extends StatelessWidget {
                     labelText: 'Password',
                     isObscure: true,
                   ),
+                  const SizedBox(height: 30),
+                  const CustomTextField(
+                    labelText: 'Re-enter Password',
+                    isObscure: true,
+                  ),
                   const SizedBox(height: 60),
+                  
                   CustomButton(
                     text: 'Sign-up',
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        '/home',
+                        (Route<dynamic> route) => false,
+                      );
+                    },
                   ),
                 ],
               ),
